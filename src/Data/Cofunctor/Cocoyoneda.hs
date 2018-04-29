@@ -12,7 +12,7 @@ module Data.Cofunctor.Cocoyoneda
 import Data.Cofunctor (Cofunctor(..))
 
 data Cocoyoneda f a where
-    Cocoyoneda :: (a -> b) -> f a -> Cocoyoneda f b
+    Cocoyoneda :: (b -> a) -> f b -> Cocoyoneda f a
 
 instance Cofunctor (Cocoyoneda f) where
     cofmap f (Cocoyoneda g x) = Cocoyoneda (f . g) x
